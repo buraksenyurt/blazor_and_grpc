@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicLibrary.Server.Data;
 
@@ -11,9 +12,11 @@ using MusicLibrary.Server.Data;
 namespace MusicLibrary.Server.Migrations
 {
     [DbContext(typeof(MusicLibraryDbContext))]
-    partial class MusicLibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230407160305_Refactored")]
+    partial class Refactored
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -43,3 +43,5 @@ dotnet ef database update
 Eğer _database update_ işlemi başarılı bir şekilde çalıştıysa en azından komut satırından bile olsa veritabanımızı görmemiz lazım.
 
 ![assets/sql_cmd_02.png](assets/sql_cmd_02.png)
+
+Pek tabi modelde değişiklikler yaparsak tekrardan bir migration planı oluşturup işletmemiz gerekiyor.
