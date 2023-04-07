@@ -1,10 +1,21 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
+using MusicLibrary.Server.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddDbContext<MusicLibraryDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("dev_conn"));
+
+#if DEBUG
+    options.EnableDetailedErrors();
+    options.EnableSensitiveDataLogging();
+#endif
+});
 
 var app = builder.Build();
 
