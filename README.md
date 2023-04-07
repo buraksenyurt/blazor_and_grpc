@@ -2,6 +2,10 @@
 
 Bu örnekteki amacım Blazor uygulamalarında, gRPC servis kullanımını deneyimlemek. gRPC servisleri özellikle service-to-service iletişimde gecikme sürelerinin düşük, verimliliğin yüksek olması istenen hallerde sıklıkla tercih edilmekte. Protobuf protokolüne göre serileşen mesajların küçük boyutlu olması da cabası. gRPC ile ilgili belki de tek sıkıntı tarayıcı desteğinin olmaması. Karşı tarafta bir proto şemasının da bulunması gerekiyor. Bu noktada blazor ile iyi bir ikili olduklarını düşünebiliriz. Örnekte basit bir blazor uygulaması geliştirmeye çalışıp servis tabanlı iletişim için gRPC kullanmayı düşünüyorum.
 
+## Setup
+
+Örneğin Ubuntu 22.04 sisteminde, SQL için docker imajı kullanarak geliştirmekteyim. Editor olarak Visual Studio Code kullanıyorum.
+
 ## Ön Hazırlıklar
 
 Bu sefer gigabyte'larıma kıydım ve SQL Server 2022 docker imajı kurmaya karar verdim.
@@ -24,3 +28,18 @@ GO
 ```
 
 ![assets/sql_cmd_01.png](assets/sql_cmd_01.png)
+
+## EF Migration Tarafı
+
+Entity Framework migration işlemleri için Microsoft.EntityFrameworkCore.Design paketinin projeye eklenmesi gerekiyor. Sonrasında örneğin Initial isimli migration planı aşağıdaki gibi oluşturulabilir.
+
+```bash
+dotnet ef migrations add Initial
+
+# Aşağıdaki komutla da migration işletilebilir
+dotnet ef database update
+```
+
+Eğer _database update_ işlemi başarılı bir şekilde çalıştıysa en azından komut satırından bile olsa veritabanımızı görmemiz lazım.
+
+![assets/sql_cmd_02.png](assets/sql_cmd_02.png)
