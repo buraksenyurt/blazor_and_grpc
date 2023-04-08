@@ -1,6 +1,16 @@
 using AutoMapper;
 namespace MusicLibrary.Server;
 
+/*
+    Model ve Entity nesneleri arasındaki geçişleri özelleştirdiğimiz sınıf.
+    Profile sınıfından türemiştir.
+    Aynı isimli özellikler otomatik olarak bağlanırlar.
+    Ancak müzisyenlerin dahil olduğu albümler veya albümlerde yer alan müzisyenlerde int türlü listelere geçişler söz konusudur.
+    Musician -> MusicianModel yönünde AlbumId listesi.
+    Album -> AlbumModel yönünde MusicianId listesi.
+    MusicianModel -> Musician yönünde entity ve model arasındaki AlbumId farkları bulunur ve yeni AlbumId değerleri içeren liste kullanılır.
+    AlbumModel -> Album yönünde de entity ve model arasındaki MusicianId farkları bulunur ve yeni MusicianId değerleri içeren liste kullanılır.
+*/
 public class SmartMapper : Profile
 {
     public SmartMapper()

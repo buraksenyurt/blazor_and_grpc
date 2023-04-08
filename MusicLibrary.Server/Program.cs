@@ -6,6 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+/*
+    SQL Server kullanıyoruz ve DbContext nesnesini middleware'e eklerken 
+    appsettings'te dev_conn ile belirtilen connection string bilgisini kullanıyoruz.
+*/
 builder.Services.AddDbContext<MusicLibraryDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("dev_conn"));
@@ -15,6 +20,7 @@ builder.Services.AddDbContext<MusicLibraryDbContext>(options =>
     options.EnableSensitiveDataLogging();
 #endif
 });
+// AutoMapper hizmetini ilave ederken özel eşleştirme işleri için SmaryMapper'ı kullanacağını belirtiyoruz.
 builder.Services.AddAutoMapper(typeof(SmartMapper));
 
 var app = builder.Build();

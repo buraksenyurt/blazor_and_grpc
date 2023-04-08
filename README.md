@@ -1,6 +1,8 @@
 # Blazor ve gRPC
 
-Bu örnekteki amacım Blazor uygulamalarında, gRPC servis kullanımını deneyimlemek. gRPC servisleri özellikle service-to-service iletişimde gecikme sürelerinin düşük, verimliliğin yüksek olması istenen hallerde sıklıkla tercih edilmekte. Protobuf protokolüne göre serileşen mesajların küçük boyutlu olması da cabası. gRPC ile ilgili belki de tek sıkıntı tarayıcı desteğinin olmaması. Karşı tarafta bir proto şemasının da bulunması gerekiyor. Bu noktada blazor ile iyi bir ikili olduklarını düşünebiliriz. Örnekte basit bir blazor uygulaması geliştirmeye çalışıp servis tabanlı iletişim için gRPC kullanmayı düşünüyorum.
+Bu örnekteki amacım Blazor uygulamalarında, gRPC servis kullanımını deneyimlemek. gRPC servisleri özellikle service-to-service iletişimde gecikme sürelerinin düşük, verimliliğin yüksek olması istenen hallerde sıklıkla tercih edilmekte. Protobuf protokolüne göre serileşen mesajların küçük boyutlu olması da cabası. gRPC ile ilgili belki de tek sıkıntı tarayıcı desteğinin olmaması. Karşı tarafta bir proto şemasının da bulunması gerekiyor. Bu noktada blazor ile iyi bir ikili olduklarını düşünebiliriz. Örnekte basit bir blazor uygulaması geliştirmeye çalışıp servis tabanlı iletişim için gRPC kullanmayı düşünüyorum. 
+
+Bu pratikte Amazon'dan bir heyecanla getirttiğim ancak Ubuntu ve Visual Studio Code odaklı anlatım yapmayıp, .Net 7 yerine de .Net 6.0 sürümünü kullandığından biraz da hayal kırıklığı yaşatan [**Building Blazor WebAssembly Applications with gRPC**](https://www.amazon.com.tr/Building-Blazor-WebAssembly-Applications-gRPC/dp/1804610550/ref=sr_1_1?__mk_tr_TR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=4X7VJ223EWP1&keywords=building+blazor+webassembly+applications+with+grpc&qid=1680897411&sprefix=building+blazor+webassembly+applications+with+grpc%2Caps%2C117&sr=8-1) isimli kitabı takip ediyorum. Eğer siz de bu kitabı tercih ederseniz kodları kopylamadan bakarak yazmaya ve anlamaya çalışın.
 
 ## Setup
 
@@ -45,3 +47,11 @@ Eğer _database update_ işlemi başarılı bir şekilde çalıştıysa en azın
 ![assets/sql_cmd_02.png](assets/sql_cmd_02.png)
 
 Pek tabi modelde değişiklikler yaparsak tekrardan bir migration planı oluşturup işletmemiz gerekiyor.
+
+## Proje Hakkında Bazı Temel Bilgiler
+
+- Data klasöründe Entity nesneleri yer almaktadır. Bazı Entity nesneleri BaseEntity sınıfından türer _(Id ve Name alanları ortak olduğu için)_
+- Servisler Model klasörü içerisinde yer alan nesneleri kullanırlar.
+- Model ve Entity nesneleri arasındaki geçişlerde AutoMapper kullanılmaktadır. SmartMapper isimli sınıfta eşleştirmelere ait özelleştirmeler vardır.
+- BaseService sınıfı tüm veritabanı iletişimini üstlenen generic bir enstrümandır. Örnek uygulamada az sayıda entity söz konusu olduğunda Interface soyutlaması tercih edilmemiştir.
+- 

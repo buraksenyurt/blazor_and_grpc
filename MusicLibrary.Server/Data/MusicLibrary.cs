@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MusicLibrary.Server.Data;
 
+/*
+    Klasik bir Entity Framework DB Context nesnesidir.
+    Müzisyenler ve dahil oldukları albümler birer DbSet olarak tutulmakta.
+*/
 public class MusicLibraryDbContext
     : DbContext
 {
@@ -11,6 +15,10 @@ public class MusicLibraryDbContext
     public DbSet<Album> Albums { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        /*
+            Müzsiyoneler için Name alanı zorunludur ve navigasyonlar sırasında Albumleri otomatik olarak bağlanır.
+            Aynı durum albüm modeli için de geçerlidir. Name alanı zorunludur ve  navigasyon da müzisyenler otomatik olarak dahil edilir. 
+        */
         modelBuilder.Entity<Musician>(m =>
         {
             m.Property(p => p.Name).IsRequired();
@@ -23,6 +31,7 @@ public class MusicLibraryDbContext
             a.Navigation(p => p.Musicians).AutoInclude();
         });
 
+        // Album ve müzisyenler arasındaki many-to-many ilişkiyi tanımlar.
         modelBuilder.Entity<AlbumMusician>(a =>
         {
             a.HasKey(p => new { p.AlbumId, p.MusicianId });
