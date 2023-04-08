@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
+using MusicLibrary.Server;
 using MusicLibrary.Server.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +15,7 @@ builder.Services.AddDbContext<MusicLibraryDbContext>(options =>
     options.EnableSensitiveDataLogging();
 #endif
 });
+builder.Services.AddAutoMapper(typeof(SmartMapper));
 
 var app = builder.Build();
 
