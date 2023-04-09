@@ -10,8 +10,11 @@ namespace MusicLibrary.Server.Service;
     E, Entity ve M, Model anlamında.
     Entity'ler BaseEntity'den türemiş olmalılar. Model'ler ise IModel interface'ini
     uyarlamış olmalılar ve default constructor'ları bulunmalı.
+
+    Ayrıca bu sınıf abstract olarak tanımlanmıştır. Yani kendisi nesne olarak örneklenemez.
+    Çalışma zamanına kayıt edilecek(register) servisler bu sınıftan türerler.
 */
-public class BaseService<E, M>
+public abstract class BaseService<E, M>
     where E : BaseEntity
     where M : IModel, new()
 {

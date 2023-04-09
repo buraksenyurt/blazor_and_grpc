@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Server;
 using MusicLibrary.Server.Data;
+using MusicLibrary.Server.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,10 @@ builder.Services.AddDbContext<MusicLibraryDbContext>(options =>
 });
 // AutoMapper hizmetini ilave ederken özel eşleştirme işleri için SmaryMapper'ı kullanacağını belirtiyoruz.
 builder.Services.AddAutoMapper(typeof(SmartMapper));
+
+// Album ve Müzisyneler için ilgili veritabanı işlemlerini üstlenen servisler DI çalışma ortamına eklenir.
+builder.Services.AddTransient<AlbumService>();
+builder.Services.AddTransient<MusicianService>();
 
 var app = builder.Build();
 

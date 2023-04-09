@@ -54,4 +54,5 @@ Pek tabi modelde değişiklikler yaparsak tekrardan bir migration planı oluştu
 - Servisler Model klasörü içerisinde yer alan nesneleri kullanırlar.
 - Model ve Entity nesneleri arasındaki geçişlerde AutoMapper kullanılmaktadır. SmartMapper isimli sınıfta eşleştirmelere ait özelleştirmeler vardır.
 - BaseService sınıfı tüm veritabanı iletişimini üstlenen generic bir enstrümandır. Örnek uygulamada az sayıda entity söz konusu olduğunda Interface soyutlaması tercih edilmemiştir.
-- 
+- Album ve müzisyenler ile ilgili servisler Service klasörü altında yer almakta olup BaseService sınıfından türetilmişlerdir.
+- Bu nesneler DI servislerine Transient modda kayıt edilmişlerdir.
