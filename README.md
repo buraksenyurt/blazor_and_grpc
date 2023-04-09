@@ -56,3 +56,5 @@ Pek tabi modelde değişiklikler yaparsak tekrardan bir migration planı oluştu
 - BaseService sınıfı tüm veritabanı iletişimini üstlenen generic bir enstrümandır. Örnek uygulamada az sayıda entity söz konusu olduğunda Interface soyutlaması tercih edilmemiştir.
 - Album ve müzisyenler ile ilgili servisler Service klasörü altında yer almakta olup BaseService sınıfından türetilmişlerdir.
 - Bu nesneler DI servislerine Transient modda kayıt edilmişlerdir.
+- Albüm ve müzisyen servislerini kullanan kontrolörler Controllers klasöründe yer alır ve generic BaseController sınıfından türerler.
+- Her bir kontroller kendisi ile ilgili olan Model, Entity ve enjekte edilen Service sınıfını kullanır.
