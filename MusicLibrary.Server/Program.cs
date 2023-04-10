@@ -1,34 +1,48 @@
 using Microsoft.EntityFrameworkCore;
+using MusicLibrary.Data;
 using MusicLibrary.Data.Entity;
 using MusicLibrary.Server;
 using MusicLibrary.Server.Service;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 /*
-    SQL Server kullanıyoruz ve DbContext nesnesini middleware'e eklerken 
-    appsettings'te dev_conn ile belirtilen connection string bilgisini kullanıyoruz.
+     Yeni Sürüm
+    EF bağımlılığını MusicLibrary.Data kütüphanesindeki 
+    DependencyInjection sınıfından gelen AddDataContext ile ekliyoruz.
 */
-builder.Services.AddDbContext<MusicLibraryDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("dev_conn"));
+builder.Services.AddDataContext(configuration);
 
-#if DEBUG
-    options.EnableDetailedErrors();
-    options.EnableSensitiveDataLogging();
-#endif
-});
+// Önceki sürüm
+// /*
+//     SQL Server kullanıyoruz ve DbContext nesnesini middleware'e eklerken 
+//     appsettings'te dev_conn ile belirtilen connection string bilgisini kullanıyoruz.
+// */
+// builder.Services.AddDbContext<MusicLibraryDbContext>(options =>
+// {
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("dev_conn"));
+
+// #if DEBUG
+//     options.EnableDetailedErrors();
+//     options.EnableSensitiveDataLogging();
+// #endif
+// });
+
+
 // AutoMapper hizmetini ilave ederken özel eşleştirme işleri için SmaryMapper'ı kullanacağını belirtiyoruz.
 builder.Services.AddAutoMapper(typeof(SmartMapper));
+
 
 // Album ve Müzisyneler için ilgili veritabanı işlemlerini üstlenen servisler DI çalışma ortamına eklenir.
 builder.Services.AddTransient<AlbumService>();
 builder.Services.AddTransient<MusicianService>();
 
 var app = builder.Build();
+
 
 if (!app.Environment.IsDevelopment())
 {

@@ -40,6 +40,13 @@ dotnet ef migrations add Initial
 
 # Aşağıdaki komutla da migration işletilebilir
 dotnet ef database update
+
+
+# Entity tarafı ayrı bir kütüphaneye alındıktan sonra ise (MusicLibrary.Data)
+# aşağıdaki şekilde ilerlenmelidir.
+# Bu komutları MusicLibrary.Data klasörü içerisindeyken çalıştırabiliriz.
+dotnet ef migrations add Intial --startup-project ../MusicLibrary.Server
+dotnet ef database update --startup-project ..//MusicLibrary.Server
 ```
 
 Eğer _database update_ işlemi başarılı bir şekilde çalıştıysa en azından komut satırından bile olsa veritabanımızı görmemiz lazım.

@@ -5,9 +5,11 @@ namespace MusicLibrary.Data.Entity;
 /*
     Klasik bir Entity Framework DB Context nesnesidir.
     Müzisyenler ve dahil oldukları albümler birer DbSet olarak tutulmakta.
+
+    Server tarafında bağımlılığı enjete ederken işe kolaylaştırmak adına IApplicationDbContext arayüzü de implemente edilmiştir.
 */
 public class MusicLibraryDbContext
-    : DbContext
+    : DbContext,IApplicationDbContext
 {
     public MusicLibraryDbContext() { }
     public MusicLibraryDbContext(DbContextOptions<MusicLibraryDbContext> options) : base(options) { }
