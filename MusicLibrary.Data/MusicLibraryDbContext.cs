@@ -9,7 +9,7 @@ namespace MusicLibrary.Data.Entity;
     Server tarafında bağımlılığı enjete ederken işe kolaylaştırmak adına IApplicationDbContext arayüzü de implemente edilmiştir.
 */
 public class MusicLibraryDbContext
-    : DbContext,IApplicationDbContext
+    : DbContext, IApplicationDbContext
 {
     public MusicLibraryDbContext() { }
     public MusicLibraryDbContext(DbContextOptions<MusicLibraryDbContext> options) : base(options) { }

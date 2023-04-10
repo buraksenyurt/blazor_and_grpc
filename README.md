@@ -36,12 +36,6 @@ GO
 Entity Framework migration işlemleri için Microsoft.EntityFrameworkCore.Design paketinin projeye eklenmesi gerekiyor. Sonrasında örneğin Initial isimli migration planı aşağıdaki gibi oluşturulabilir.
 
 ```bash
-dotnet ef migrations add Initial
-
-# Aşağıdaki komutla da migration işletilebilir
-dotnet ef database update
-
-
 # Entity tarafı ayrı bir kütüphaneye alındıktan sonra ise (MusicLibrary.Data)
 # aşağıdaki şekilde ilerlenmelidir.
 # Bu komutları MusicLibrary.Data klasörü içerisindeyken çalıştırabiliriz.
@@ -57,7 +51,7 @@ Pek tabi modelde değişiklikler yaparsak tekrardan bir migration planı oluştu
 
 ## Proje Hakkında Bazı Temel Bilgiler
 
-- Data klasöründe Entity nesneleri yer almaktadır. Bazı Entity nesneleri BaseEntity sınıfından türer _(Id ve Name alanları ortak olduğu için)_
+- ~~Data klasöründe Entity nesneleri yer almaktadır. Bazı Entity nesneleri BaseEntity sınıfından türer _(Id ve Name alanları ortak olduğu için)_~~ Data klasörü, MusicLibrary.Data isimli kütüphanede yeniden konuşlandırılmuştır. Server tarafındaki DI servislerine EF bağımlılığının eklenmesi için AddDataContext fonksiyonu geliştirilmiştir. Migration işlemleri buna göre yeniden düzenlenmiştir.
 - Servisler Model klasörü içerisinde yer alan nesneleri kullanırlar.
 - Model ve Entity nesneleri arasındaki geçişlerde AutoMapper kullanılmaktadır. SmartMapper isimli sınıfta eşleştirmelere ait özelleştirmeler vardır.
 - BaseService sınıfı tüm veritabanı iletişimini üstlenen generic bir enstrümandır. Örnek uygulamada az sayıda entity söz konusu olduğunda Interface soyutlaması tercih edilmemiştir.

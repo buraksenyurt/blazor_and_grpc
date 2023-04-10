@@ -20,7 +20,6 @@ public abstract class BaseService<E, M>
 {
     private readonly MusicLibraryDbContext _dbContenxt;
     private readonly IMapper _mapper;
-    private readonly ILogger _logger;
 
     /*
         Serviste kullanılacak bağımlılıklar constructor üzerinden enjekte edilirler.
