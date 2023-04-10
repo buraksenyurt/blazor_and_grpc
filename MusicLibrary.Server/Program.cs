@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using MusicLibrary.Data.Entity;
 using MusicLibrary.Server;
-using MusicLibrary.Server.Data;
 using MusicLibrary.Server.Service;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MusicLibrary.Data\MusicLibrary.Data.csproj" />
+  </ItemGroup>
+
 </Project>

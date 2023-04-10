@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace MusicLibrary.Server.Data;
+namespace MusicLibrary.Data.Entity;
 
 /*
     Klasik bir Entity Framework DB Context nesnesidir.

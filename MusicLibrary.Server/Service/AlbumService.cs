@@ -1,5 +1,5 @@
 using AutoMapper;
-using MusicLibrary.Server.Data;
+using MusicLibrary.Data.Entity;
 using MusicLibrary.Server.Shared.Model;
 
 namespace MusicLibrary.Server.Service;

@@ -1,4 +1,4 @@
-namespace MusicLibrary.Server.Data;
+namespace MusicLibrary.Data.Entity;
 
 public class Musician
     : BaseEntity

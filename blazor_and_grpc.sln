@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Server", "MusicLibrary.Server\MusicLibrary.Server.csproj", "{B8CCB52B-368D-4BA2-A8E1-CF1BF0179CD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Data", "MusicLibrary.Data\MusicLibrary.Data.csproj", "{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B8CCB52B-368D-4BA2-A8E1-CF1BF0179CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8CCB52B-368D-4BA2-A8E1-CF1BF0179CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8CCB52B-368D-4BA2-A8E1-CF1BF0179CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

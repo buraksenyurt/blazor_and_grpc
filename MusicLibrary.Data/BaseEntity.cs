@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-namespace MusicLibrary.Server.Data;
+
+namespace MusicLibrary.Data.Entity;
 
 /*
     Bazı Entity nesnelerinin Id ve Name alanı olması beklenmektedir.
