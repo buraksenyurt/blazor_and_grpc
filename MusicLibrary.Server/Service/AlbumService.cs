@@ -14,8 +14,8 @@ namespace MusicLibrary.Server.Service;
 public class AlbumService
     : BaseService<Album, AlbumModel>
 {
-    public AlbumService(MusicLibraryDbContext dbContext, IMapper mapper, ILogger logger)
-        : base(dbContext, mapper, logger)
+    public AlbumService(MusicLibraryDbContext dbContext, IMapper mapper)
+        : base(dbContext, mapper)
     {
     }
 }

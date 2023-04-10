@@ -25,11 +25,10 @@ public abstract class BaseService<E, M>
     /*
         Serviste kullanılacak bağımlılıklar constructor üzerinden enjekte edilirler.
     */
-    public BaseService(MusicLibraryDbContext dbContext, IMapper mapper, ILogger logger)
+    public BaseService(MusicLibraryDbContext dbContext, IMapper mapper)
     {
         _dbContenxt = dbContext;
         _mapper = mapper;
-        _logger = logger;
     }
 
     /*
@@ -37,7 +36,6 @@ public abstract class BaseService<E, M>
     */
     public async Task<M> CreateAsync(M model)
     {
-        _logger.LogInformation("Create çağrısı geldi.");
         // Model nesnesinden entity nesnesine dönüştür
         var entity = _mapper.Map<E>(model);
         // Context'e entity nesne örneğini ekle
@@ -63,7 +61,6 @@ public abstract class BaseService<E, M>
     // ID bazlı entity aramaları için dışarıya açılan fonksiyon
     public async Task<M> GetByIdAsync(int id)
     {
-        _logger.LogInformation($"{id} değerli {typeof(M)} modeli için arama isteği geldi.");
         var entity = await GetEntityAsync(id);
         return _mapper.Map<M>(entity);
     }
@@ -92,7 +89,6 @@ public abstract class BaseService<E, M>
     // Veri güncelleme fonksiyonu
     public async Task<M> UpdateAsync(int id, M model)
     {
-        _logger.LogInformation($"{id} değerli {typeof(M)} için güncelleme işlemi.");
         // Önce ilgili entity bulunur
         var entity = await GetEntityAsync(id);
         // parametre olarak gelen model entity'ye çevrilir. Dolayısıyla güncellenen değerler taşınmış olur
@@ -106,7 +102,6 @@ public abstract class BaseService<E, M>
     // Veri silme fonksiyonu
     public async Task DeleteAsync(int id)
     {
-        _logger.LogInformation($"{id} için silme işlemi.");
         // id ile gelen entity aranır
         var entity = await GetEntityAsync(id);
         // context'ten çıkarılır
