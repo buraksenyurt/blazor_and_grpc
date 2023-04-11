@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Model;
+using MusicLibrary.Shared;
 
 namespace MusicLibrary.Service.Contract;
 

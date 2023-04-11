@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Service.Rest",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Client", "MusicLibrary.Client\MusicLibrary.Client.csproj", "{69ABF150-8E90-4E1B-BFCF-8E62485412DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Model", "MusicLibrary.Model\MusicLibrary.Model.csproj", "{90D11C6E-4071-411D-BE5D-B3680A2F7021}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Shared", "MusicLibrary.Shared\MusicLibrary.Shared.csproj", "{90D11C6E-4071-411D-BE5D-B3680A2F7021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

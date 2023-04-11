@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MusicLibrary.Data.Entity;
 using MusicLibrary.Service.Contract;
-using MusicLibrary.Model;
+using MusicLibrary.Shared;
 
 namespace MusicLibrary.Service.Controllers;
 

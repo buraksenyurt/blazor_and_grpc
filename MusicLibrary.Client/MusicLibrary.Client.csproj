@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MusicLibrary.Model\MusicLibrary.Model.csproj" />
+    <ProjectReference Include="..\MusicLibrary.Shared\MusicLibrary.Shared.csproj" />
   </ItemGroup>
 
 </Project>

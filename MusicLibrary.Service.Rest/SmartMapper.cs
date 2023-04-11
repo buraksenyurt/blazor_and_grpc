@@ -1,6 +1,6 @@
 using AutoMapper;
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Model;
+using MusicLibrary.Shared;
 
 namespace MusicLibrary.Service.Rest;
 

@@ -1,4 +1,4 @@
-namespace MusicLibrary.Model;
+namespace MusicLibrary.Shared;
 
 public enum Category
 {
