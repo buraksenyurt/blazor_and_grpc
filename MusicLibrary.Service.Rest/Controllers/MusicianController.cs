@@ -1,5 +1,5 @@
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Service.Model;
+using MusicLibrary.Model;
 using MusicLibrary.Service.Contract;
 
 namespace MusicLibrary.Service.Controllers;

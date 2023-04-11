@@ -18,7 +18,7 @@ public class MusicLibraryDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         /*
-            Müzsiyoneler için Name alanı zorunludur ve navigasyonlar sırasında Albumleri otomatik olarak bağlanır.
+            Müzsiyenler için Name alanı zorunludur ve navigasyonlar sırasında Albumleri otomatik olarak bağlanır.
             Aynı durum albüm modeli için de geçerlidir. Name alanı zorunludur ve  navigasyon da müzisyenler otomatik olarak dahil edilir. 
         */
         modelBuilder.Entity<Musician>(m =>

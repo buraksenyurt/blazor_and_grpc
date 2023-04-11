@@ -1,3 +1,5 @@
+using MusicLibrary.Model;
+
 namespace MusicLibrary.Data.Entity;
 
 public class Album

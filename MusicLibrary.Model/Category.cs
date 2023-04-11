@@ -1,4 +1,4 @@
-namespace MusicLibrary.Data.Entity;
+namespace MusicLibrary.Model;
 
 public enum Category
 {

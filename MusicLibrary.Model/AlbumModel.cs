@@ -1,7 +1,4 @@
-
-using MusicLibrary.Data.Entity;
-
-namespace MusicLibrary.Service.Model;
+namespace MusicLibrary.Model;
 
 public class AlbumModel : IModel
 {

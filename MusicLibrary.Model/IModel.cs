@@ -1,4 +1,4 @@
-namespace MusicLibrary.Service.Model;
+namespace MusicLibrary.Model;
 
 /*
     Servis tarafında kullanılacak olan model nesneleri 
