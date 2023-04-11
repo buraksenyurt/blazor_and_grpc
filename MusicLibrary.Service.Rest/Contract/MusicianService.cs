@@ -1,8 +1,8 @@
 using AutoMapper;
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Server.Shared.Model;
+using MusicLibrary.Service.Model;
 
-namespace MusicLibrary.Server.Service;
+namespace MusicLibrary.Service.Contract;
 
 /*
     Müzisyenlerle ilgili veritabanı işlemlerini ele alan servis sınıfı.

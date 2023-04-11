@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Server.Service;
-using MusicLibrary.Server.Shared.Model;
+using MusicLibrary.Service.Contract;
+using MusicLibrary.Service.Model;
 
-namespace MusicLibrary.Server.Controllers;
+namespace MusicLibrary.Service.Controllers;
 
 /*
     Ortak işlemleri bünyesinde toplayan generic controller sınıfı.
@@ -11,6 +11,8 @@ namespace MusicLibrary.Server.Controllers;
 
     Service nesnesi constructor üzerinden enjekte edilir.
 */
+[ApiController]
+[Route("rest/[controller]")]
 public class BaseController<M, E, S> :
     ControllerBase
     where E : BaseEntity

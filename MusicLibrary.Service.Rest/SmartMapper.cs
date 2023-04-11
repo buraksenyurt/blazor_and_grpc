@@ -1,7 +1,8 @@
 using AutoMapper;
 using MusicLibrary.Data.Entity;
+using MusicLibrary.Service.Model;
 
-namespace MusicLibrary.Server;
+namespace MusicLibrary.Service.Rest;
 
 /*
     Model ve Entity nesneleri arasındaki geçişleri özelleştirdiğimiz sınıf.
@@ -17,8 +18,8 @@ public class SmartMapper : Profile
 {
     public SmartMapper()
     {
-        CreateMap<Musician, Shared.Model.MusicianModel>().ForMember(m => m.AlbumIds, map => map.MapFrom(ms => ms.Albums.Select(a => a.AlbumId)));
-        CreateMap<Shared.Model.MusicianModel, Musician>().ForMember(m => m.Id, map => map.Ignore()).ForMember(m => m.Albums, map => map.MapFrom((model, entity) =>
+        CreateMap<Musician, MusicianModel>().ForMember(m => m.AlbumIds, map => map.MapFrom(ms => ms.Albums.Select(a => a.AlbumId)));
+        CreateMap<MusicianModel, Musician>().ForMember(m => m.Id, map => map.Ignore()).ForMember(m => m.Albums, map => map.MapFrom((model, entity) =>
         {
             var current = entity.Albums.Select(a => a.AlbumId).ToArray();
             var albums = entity.Albums.ToList();
@@ -27,8 +28,8 @@ public class SmartMapper : Profile
 
             return albums;
         }));
-        CreateMap<Album, Shared.Model.AlbumModel>().ForMember(m => m.MusicianIds, map => map.MapFrom(ms => ms.Musicians.Select(m => m.MusicianId)));
-        CreateMap<Shared.Model.AlbumModel, Album>().ForMember(m => m.Id, map => map.Ignore()).ForMember(m => m.Musicians, map => map.MapFrom((model, entity) =>
+        CreateMap<Album, AlbumModel>().ForMember(m => m.MusicianIds, map => map.MapFrom(ms => ms.Musicians.Select(m => m.MusicianId)));
+        CreateMap<AlbumModel, Album>().ForMember(m => m.Id, map => map.Ignore()).ForMember(m => m.Musicians, map => map.MapFrom((model, entity) =>
         {
             var current = entity.Musicians.Select(m => m.MusicianId).ToArray();
             var musicians = entity.Musicians.ToList();

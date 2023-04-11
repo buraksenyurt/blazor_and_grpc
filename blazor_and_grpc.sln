@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Server", "MusicLibrary.Server\MusicLibrary.Server.csproj", "{B8CCB52B-368D-4BA2-A8E1-CF1BF0179CD4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Data", "MusicLibrary.Data\MusicLibrary.Data.csproj", "{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibrary.Service.Rest", "MusicLibrary.Service.Rest\MusicLibrary.Service.Rest.csproj", "{F7AC1997-8DD7-46F1-BC00-9917F48A939B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,9 @@ Global
 		{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93C8D019-B6FD-49B6-9E2A-DF89FD0BB2B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7AC1997-8DD7-46F1-BC00-9917F48A939B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AC1997-8DD7-46F1-BC00-9917F48A939B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AC1997-8DD7-46F1-BC00-9917F48A939B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AC1997-8DD7-46F1-BC00-9917F48A939B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

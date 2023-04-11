@@ -1,8 +1,8 @@
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Server.Service;
-using MusicLibrary.Server.Shared.Model;
+using MusicLibrary.Service.Model;
+using MusicLibrary.Service.Contract;
 
-namespace MusicLibrary.Server.Controllers;
+namespace MusicLibrary.Service.Controllers;
 
 /*
     Müzisyenler için kullanılan kontrollör sınıfı. 

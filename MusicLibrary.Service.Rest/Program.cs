@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Data;
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Server;
-using MusicLibrary.Server.Service;
+using MusicLibrary.Service.Contract;
+using MusicLibrary.Service.Rest;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -41,22 +41,22 @@ builder.Services.AddAutoMapper(typeof(SmartMapper));
 builder.Services.AddTransient<AlbumService>();
 builder.Services.AddTransient<MusicianService>();
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
-
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles();
+app.UseAuthorization();
 
-app.UseRouting();
-
-app.MapBlazorHub();
-app.MapFallbackToPage("/_Host");
+app.MapControllers();
 
 app.Run();

@@ -1,4 +1,4 @@
-namespace MusicLibrary.Server.Shared.Model;
+namespace MusicLibrary.Service.Model;
 
 public class MusicianModel : IModel
 {
