@@ -1,0 +1,92 @@
+@typeparam M where M : IModel, new()
+@inject ILoggerFactory LoggerFactory
+
+@*
+veri görüntüleme için kullanılan generic bileşen(component)
+Tipik olarak veri içeriğini bir Grid'de göstermekte.
+Kullanıcı isterse Edit düğmesi, Id bazlı Path üzerinden düzenleme adresine gidebilir.
+*@
+
+<a href="@GetDetailUrl(0)" class="btn btn-secondary">New</a>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            @foreach (var column in Data.Columns)
+            {
+                <th>@column.Name</th>
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <Virtualize Items="@Data.Rows" Context="item">
+            <tr>
+                @foreach (var data in item.Values)
+                {
+                    <td>
+                        @if (data.Value is null)
+                        {
+                            <span>---</span>
+                        }
+                        else
+                        {
+                            @data.Value
+                        }
+                    </td>
+                }
+
+                <td class="is-actions-cell">
+                    <div class="buttons is-right">
+                        <a href="@GetDetailUrl(item.OriginValue.Id)" class="btn btn-primary">Edit</a>
+                    </div>
+                </td>
+            </tr>
+        </Virtualize>
+    </tbody>
+</table>
+
+@code {
+
+    /*
+    HTTP çağrısı yapan bileşen DI ile içeriye enjekte edilmekte.
+    Varsayılan olarak Program.cs içerisinde HttpClient nesnesi eklenmektedir.
+    */
+    [Inject]
+    public HttpClient HttpCaller { get; set; } = null!;
+
+    [Inject]
+    public NavigationManager Navigation { get; set; } = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public string RestApiPath { get; set; } = string.Empty;
+
+    public Table<M> Data { get; set; } = new Table<M>();
+
+    public string GetDetailUrl(int id) => $"{Navigation.ToAbsoluteUri(Navigation.Uri).LocalPath}/{id}";
+
+    // Bileşen yüklenirken çalışan fonksiyon
+    protected override async Task OnInitializedAsync()
+    {
+        var logger = LoggerFactory.CreateLogger<DataView<M>>();
+
+        var type = typeof(M);
+        // Kolon adları model özelliklerinden çekilir
+        Data.Columns = type.GetProperties().Select(p => new TableColumn { Name = p.Name, PropertyInfo = p });
+        // HTTP Get çağrısı yapılır
+        var url = $"/rest/{RestApiPath}/list";
+        logger.LogInformation("{url} için bir HTTP Get talebi söz konusu");
+        var model = await HttpCaller.GetFromJsonAsync<IEnumerable<M>>(url) ?? new List<M>();
+
+        foreach (var item in model)
+        {
+            var row = new TableRow<M>(item);
+            foreach (var column in Data.Columns)
+            {
+                var value = column.PropertyInfo.GetValue(item);
+                row.Values.Add(new TableCell { Value = value });
+            }
+            Data.Rows.Add(row);
+        }
+    }
+}

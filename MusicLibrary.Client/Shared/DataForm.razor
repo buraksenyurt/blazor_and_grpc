@@ -1,0 +1,75 @@
+@inject ILoggerFactory LoggerFactory
+@typeparam M where M : IModel, new()
+@attribute [CascadingTypeParameter(nameof(M))]
+
+<EditForm Model="Model" Context="FormEditContext" OnValidSubmit="Save">
+    <DataAnnotationsValidator />
+    <CascadingValue Value=Model>
+        @ChildContent(Model)
+    </CascadingValue>
+
+    <hr />
+    <button type="submit">Save</button>
+
+    @if (!string.IsNullOrWhiteSpace(errorMessage))
+    {
+        <div class="alert alert-danger">@errorMessage</div>
+    }
+    </EditForm>
+
+    @code {
+    [Inject]
+    HttpClient HttpCaller { get; set; } = null!;
+
+    [Inject]
+    NavigationManager Navigation { get; set; } = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public string RestApiPath { get; set; } = string.Empty;
+
+    [Parameter]
+    [EditorRequired]
+    public int Id { get; set; }
+
+    [Parameter]
+    public RenderFragment<M> ChildContent { get; set; } = null!;
+
+    public M Model { get; set; } = new();
+    private string errorMessage = string.Empty;
+    protected override async Task OnInitializedAsync()
+    {
+        await Get();
+    }
+
+    private async Task Get()
+    {
+        Model = await HttpCaller.GetFromJsonAsync<M>($"rest/{RestApiPath}/{Id}") ?? new();
+    }
+
+    private async Task Save()
+    {
+        var logger = LoggerFactory.CreateLogger<DataForm<M>>();
+        var url = $"rest/{RestApiPath}/{Id}";
+        logger.LogInformation("{url} adresine HTTP Post talebi var");
+        var response = Id <= 0 ? await HttpCaller.PostAsJsonAsync($"rest/{RestApiPath}", Model) : await
+        HttpCaller.PutAsJsonAsync(url, Model);
+
+        if (response.IsSuccessStatusCode)
+        {
+            if (response.StatusCode == System.Net.HttpStatusCode.Created)
+            {
+                if (response.Headers.TryGetValues("location", out var urls))
+                {
+                    Navigation.NavigateTo(urls.First(), replace: true);
+                }
+            }
+            await Get();
+        }
+        else
+        {
+            logger.LogCritical("Problem var. {errorMessage}");
+            errorMessage = await response.Content.ReadAsStringAsync();
+        }
+    }
+}
