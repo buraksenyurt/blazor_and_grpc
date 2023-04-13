@@ -1,0 +1,22 @@
+@page "/albums/{Id:int}"
+<DataForm RestApiPath="album" Id="Id" M="MusicLibrary.Shared.AlbumModel" Context="model">
+    <p><label>Name:
+            <InputText @bind-Value="model.Name" />
+        </label></p>
+    <p><label>Year:
+            <InputNumber @bind-Value="model.Year" />
+        </label></p>
+    <p><label>Category:
+            <InputSelect @bind-Value="model.Category">
+                @foreach (var ctg in Enum.GetValues(typeof(Category)))
+                {
+                    <option value="@ctg">@ctg</option>
+                }
+            </InputSelect>
+        </label></p>
+</DataForm>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+}

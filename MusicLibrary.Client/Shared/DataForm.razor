@@ -9,7 +9,7 @@
     </CascadingValue>
 
     <hr />
-    <button type="submit">Save</button>
+    <button type="submit">Kaydet</button>
 
     @if (!string.IsNullOrWhiteSpace(errorMessage))
     {
@@ -51,7 +51,7 @@
     {
         var logger = LoggerFactory.CreateLogger<DataForm<M>>();
         var url = $"rest/{RestApiPath}/{Id}";
-        logger.LogInformation("{url} adresine HTTP Post talebi var");
+        logger.LogInformation($"{url} adresine HTTP Post talebi var");
         var response = Id <= 0 ? await HttpCaller.PostAsJsonAsync($"rest/{RestApiPath}", Model) : await
         HttpCaller.PutAsJsonAsync(url, Model);
 
@@ -61,6 +61,7 @@
             {
                 if (response.Headers.TryGetValues("location", out var urls))
                 {
+                    logger.LogInformation($"Kaydetme sonrası {urls.First()} adresine gidilecek");
                     Navigation.NavigateTo(urls.First(), replace: true);
                 }
             }

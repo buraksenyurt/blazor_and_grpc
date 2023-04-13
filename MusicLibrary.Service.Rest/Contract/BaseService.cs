@@ -52,7 +52,7 @@ public abstract class BaseService<E, M>
         var entity = await _dbContenxt.FindAsync<E>(id);
         if (entity == null)
         {
-            throw new Exception($"{id} değerine sahip {typeof(E)} entity bulunamdı.");
+            throw new Exception($"{id} değerine sahip {typeof(E)} bulunamadı.");
         }
         return entity;
     }

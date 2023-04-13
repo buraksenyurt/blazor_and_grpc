@@ -1,0 +1,20 @@
+@page "/musicians/{Id:int}"
+<DataForm RestApiPath="musician" Id="Id" M="MusicLibrary.Shared.MusicianModel" Context="model">
+    <p><label>Name:
+            <InputText @bind-Value="model.Name" />
+        </label></p>
+    <p><label>Birth Day:
+            <InputDate @bind-Value="model.Birthdate" />
+        </label></p>
+    <p><label>Star Point:
+            <InputNumber @bind-Value="model.StarPoint" />
+        </label></p>
+    <p><label>Biography:
+            <InputTextArea @bind-Value="model.Bio" />
+        </label></p>
+</DataForm>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+}
