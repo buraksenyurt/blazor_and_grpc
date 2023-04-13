@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 using MusicLibrary.Data;
 using MusicLibrary.Data.Entity;
 using MusicLibrary.Service.Contract;
@@ -58,5 +59,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(policy =>
+    policy.WithOrigins("http://localhost:5140", "https://localhost:5141")
+    .AllowAnyMethod()
+    .WithHeaders(HeaderNames.ContentType));
 
 app.Run();
