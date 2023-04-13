@@ -70,8 +70,8 @@ public class BaseController<M, E, S> :
         Güncellenmek istenen kaynağın id bilgisi URL yolundan(Route) çekilir. [FromRoute]
         Veri içeriği ise mesaj gövdesinden alınır. [FromBody]
     */
-    [HttpPut]
-    public virtual async Task<IActionResult> Update([FromRoute] int id, [FromBody] M model)
+    [HttpPut("{id:int}")]
+    public virtual async Task<IActionResult> Update(int id, [FromBody] M model)
     {
         await _service.UpdateAsync(id, model);
         return Ok();

@@ -48,11 +48,11 @@ public abstract class BaseService<E, M>
     // Delete ve Update işlemleri için kullanılacak yardımcı metot.
     // Bunu dışarıya açmadığımız için private
     private async Task<E> GetEntityAsync(int id)
-    {
+    {        
         var entity = await _dbContenxt.FindAsync<E>(id);
         if (entity == null)
         {
-            throw new Exception($"Id değerine sahip {typeof(E)} entity bulunamdı.");
+            throw new Exception($"{id} değerine sahip {typeof(E)} entity bulunamdı.");
         }
         return entity;
     }
