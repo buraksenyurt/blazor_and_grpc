@@ -1,0 +1,44 @@
+syntax = "proto3";
+package musiclibrary.grpc.contracts;
+option csharp_namespace = "MusicLibrary.Service.Grpc.Protos";
+import "google/protobuf/timestamp.proto";
+
+message SingleItemRequest{
+    int32 id = 1;
+}
+
+message ListItemRequest{
+    int32 page = 1;
+    int32 pageSize = 2;
+}
+
+message CreateResponse{
+    int32 id = 1;
+    string path = 2;
+}
+
+message GenericResponse{
+    bool success = 1;
+}
+
+message Empty {}
+
+message Musician{
+    int32 id = 1;
+    string name = 2;
+    google.protobuf.Timestamp birthDate = 3;
+    int32 startPoint = 4;
+    string bio = 5;
+    repeated int32 albumIds = 6;
+}
+
+service MusicianContract{
+    rpc Create(Musician) returns (CreateResponse);
+    rpc Update(Musician) returns (GenericResponse);
+    rpc Delete(SingleItemRequest) returns (GenericResponse);
+    rpc Get(SingleItemRequest) returns (Musician);
+    // GetList talebi geldiğinde sunucundan birden fazla Musician mesajı yollanacağını belirtmiş oluyoruz.
+    // Bu mesajların her biri bir Musician içeriğine sahip olacak ve istemci her mesajda bir müzisyen bilgisini almış olacak.
+    rpc GetList(ListItemRequest) returns (stream Musician); 
+
+}
