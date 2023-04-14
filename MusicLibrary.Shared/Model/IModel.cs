@@ -1,4 +1,4 @@
-namespace MusicLibrary.Shared;
+namespace MusicLibrary.Shared.Model;
 
 /*
     Servis tarafında kullanılacak olan model nesneleri 

@@ -1,8 +1,6 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
 using MusicLibrary.Data;
-using MusicLibrary.Data.Entity;
-using MusicLibrary.Service.Contract;
+using MusicLibrary.Service;
 using MusicLibrary.Service.Rest;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,9 +1,9 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MusicLibrary.Data.Entity;
-using MusicLibrary.Shared;
+using MusicLibrary.Shared.Model;
 
-namespace MusicLibrary.Service.Contract;
+namespace MusicLibrary.Service;
 
 /*
     Temel CRUD operasyonları ile ilgili veritabanı iletişimini sağlayan generic sınıf.

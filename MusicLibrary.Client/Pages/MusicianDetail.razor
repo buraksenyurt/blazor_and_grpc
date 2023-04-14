@@ -1,5 +1,5 @@
 @page "/musicians/{Id:int}"
-<DataForm RestApiPath="musician" Id="Id" M="MusicLibrary.Shared.MusicianModel" Context="model">
+<DataForm RestApiPath="musician" Id="Id" M="MusicLibrary.Shared.Model.MusicianModel" Context="model">
     <p><label>Name:
             <InputText @bind-Value="model.Name" />
         </label></p>

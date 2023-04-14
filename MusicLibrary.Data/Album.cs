@@ -1,4 +1,4 @@
-using MusicLibrary.Shared;
+using MusicLibrary.Shared.Model;
 
 namespace MusicLibrary.Data.Entity;
 

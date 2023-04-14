@@ -1,4 +1,4 @@
-namespace MusicLibrary.Shared;
+namespace MusicLibrary.Shared.Model;
 
 public class AlbumModel : IModel
 {
