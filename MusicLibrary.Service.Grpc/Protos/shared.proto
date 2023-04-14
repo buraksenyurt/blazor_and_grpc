@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+message SingleItemRequest{
+    int32 id = 1;
+}
+
+message ListItemRequest{
+    int32 page = 1;
+    int32 pageSize = 2;
+}
+
+message CreateResponse{
+    int32 id = 1;
+    string path = 2;
+}
+
+message GenericResponse{
+    bool success = 1;
+}
+
+message Empty {}
+
+enum Category
+{
+    Classical = 0;
+    Pop = 1;
+    Rock = 2;
+    Jazz = 3;
+    Electronic = 4;
+    Country = 5;
+    Blues = 6;
+    Heavy_Metal = 7;
+    Disco = 8;
+    Reggae = 9;
+}

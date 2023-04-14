@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\shared.proto" />
     <Protobuf Include="Protos\musician.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\album.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
