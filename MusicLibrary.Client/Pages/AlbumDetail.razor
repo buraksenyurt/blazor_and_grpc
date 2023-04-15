@@ -8,7 +8,7 @@
         </label></p>
     <p><label>Category:
             <InputSelect @bind-Value="model.Category">
-                @foreach (var ctg in Enum.GetValues(typeof(Category)))
+                @foreach (var ctg in Enum.GetValues(typeof(CategoryModel)))
                 {
                     <option value="@ctg">@ctg</option>
                 }

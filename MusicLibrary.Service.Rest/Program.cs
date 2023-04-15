@@ -1,7 +1,7 @@
 using Microsoft.Net.Http.Headers;
 using MusicLibrary.Data;
 using MusicLibrary.Service;
-using MusicLibrary.Service.Rest;
+using MusicLibrary.Shared.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -33,7 +33,7 @@ builder.Services.AddDataContext(configuration);
 
 
 // AutoMapper hizmetini ilave ederken özel eşleştirme işleri için SmaryMapper'ı kullanacağını belirtiyoruz.
-builder.Services.AddAutoMapper(typeof(SmartMapper));
+builder.Services.AddAutoMapper(typeof(RestMapper));
 
 
 // Album ve Müzisyneler için ilgili veritabanı işlemlerini üstlenen servisler DI çalışma ortamına eklenir.

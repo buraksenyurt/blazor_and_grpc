@@ -1,6 +1,6 @@
 namespace MusicLibrary.Shared.Model;
 
-public enum Category
+public enum CategoryModel
 {
     Classical,
     Pop,

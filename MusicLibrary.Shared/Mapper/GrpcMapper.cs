@@ -1,12 +1,13 @@
 using AutoMapper;
 using MusicLibrary.Shared.Model;
 using Google.Protobuf.WellKnownTypes;
+using MusicLibrary.Data.Entity;
 
-namespace MusicLibrary.Service.Grpc;
+namespace MusicLibrary.Shared.Mapper;
 
-public class SmartMapper : Profile
+public class GrpcMapper : Profile
 {
-    public SmartMapper()
+    public GrpcMapper()
     {
         CreateMap<DateTime, Timestamp>()
             .ConvertUsing(m => Timestamp.FromDateTime(DateTime.SpecifyKind(m, DateTimeKind.Utc)));

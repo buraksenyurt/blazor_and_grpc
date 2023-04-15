@@ -1,10 +1,11 @@
 using MusicLibrary.Service.Grpc;
 using MusicLibrary.Service.Grpc.Contracts;
+using MusicLibrary.Shared.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddGrpc();
-builder.Services.AddAutoMapper(typeof(SmartMapper));
+builder.Services.AddAutoMapper(typeof(GrpcMapper));
 
 var app = builder.Build();
 

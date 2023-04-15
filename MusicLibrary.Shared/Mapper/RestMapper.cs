@@ -2,7 +2,7 @@ using AutoMapper;
 using MusicLibrary.Data.Entity;
 using MusicLibrary.Shared.Model;
 
-namespace MusicLibrary.Service.Rest;
+namespace MusicLibrary.Shared.Mapper;
 
 /*
     Model ve Entity nesneleri arasındaki geçişleri özelleştirdiğimiz sınıf.
@@ -14,9 +14,10 @@ namespace MusicLibrary.Service.Rest;
     MusicianModel -> Musician yönünde entity ve model arasındaki AlbumId farkları bulunur ve yeni AlbumId değerleri içeren liste kullanılır.
     AlbumModel -> Album yönünde de entity ve model arasındaki MusicianId farkları bulunur ve yeni MusicianId değerleri içeren liste kullanılır.
 */
-public class SmartMapper : Profile
+public class RestMapper 
+    : Profile
 {
-    public SmartMapper()
+    public RestMapper()
     {
         CreateMap<Musician, MusicianModel>().ForMember(m => m.AlbumIds, map => map.MapFrom(ms => ms.Albums.Select(a => a.AlbumId)));
         CreateMap<MusicianModel, Musician>().ForMember(m => m.Id, map => map.Ignore()).ForMember(m => m.Albums, map => map.MapFrom((model, entity) =>
