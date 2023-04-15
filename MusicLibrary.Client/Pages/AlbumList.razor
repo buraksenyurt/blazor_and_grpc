@@ -1,3 +1,34 @@
+@using MusicLibrary.Shared.Model
+@inject IMapper mapper
+@inject AlbumContract.AlbumContractClient client
+
 @page "/albums"
 
-<DataView RestApiPath="album" M="MusicLibrary.Shared.Model.AlbumModel" />
+@* <DataView RestApiPath="album" M="MusicLibrary.Shared.Model.AlbumModel" /> *@
+
+<table class="table table-bordered table-striped">
+    @foreach (var item in Data)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Year</td>
+            <td>@item.Category</td>
+        </tr>
+    }
+</table>
+
+@code {
+    public List<AlbumModel> Data { get; set; } = new List<AlbumModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var stream = client.GetList(new ListItemRequest { Page = 1, PageSize = 20 }).ResponseStream;
+        while (await stream.MoveNext(default))
+        {
+            var item = mapper.Map<AlbumModel>(stream.Current);
+            Data.Add(item);
+        }
+    }
+
+}
