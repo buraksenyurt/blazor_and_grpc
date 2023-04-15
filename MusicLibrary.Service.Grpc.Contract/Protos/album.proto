@@ -5,9 +5,9 @@ import "Protos/shared.proto";
 message Album{
     int32 id = 1;
     string name = 2;    
-    int32 year = 3;
-    repeated int32 musicianIds = 4;
-    Category category = 5;
+    Category category = 3;
+    int32 year = 4;
+    repeated int32 musicianIds = 5;
 }
 
 service AlbumContract {

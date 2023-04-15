@@ -10,16 +10,15 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddAutoMapper(typeof(RestMapper)); //REST
+builder.Services.AddAutoMapper(typeof(GrpcMapper)); // GRPC
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5200") }); //REST
 
-builder.Services.AddAutoMapper(typeof(GrpcMapper)); // GRPC
-// GRPC
 builder.Services.AddSingleton(s =>
 {
     var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
     var channel = GrpcChannel.ForAddress("http://localhost:5030", new GrpcChannelOptions { HttpClient = httpClient });
     var client = new AlbumContract.AlbumContractClient(channel);
     return client;
-});
+}); //GRPC
 
 await builder.Build().RunAsync();
