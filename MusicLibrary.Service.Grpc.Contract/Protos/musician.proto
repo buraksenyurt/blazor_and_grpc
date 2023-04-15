@@ -12,7 +12,7 @@ message Musician{
     repeated int32 albumIds = 6;
 }
 
-service MusicianContract{
+service MusicianContract {
     rpc Create(Musician) returns (CreateResponse);
     rpc Update(Musician) returns (GenericResponse);
     rpc Delete(SingleItemRequest) returns (GenericResponse);
@@ -20,5 +20,4 @@ service MusicianContract{
     // GetList talebi geldiğinde sunucundan birden fazla Musician mesajı yollanacağını belirtmiş oluyoruz.
     // Bu mesajların her biri bir Musician içeriğine sahip olacak ve istemci her mesajda bir müzisyen bilgisini almış olacak.
     rpc GetList(ListItemRequest) returns (stream Musician); 
-
 }

@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\shared.proto" />
-    <Protobuf Include="Protos\musician.proto" GrpcServices="Server" />
-    <Protobuf Include="Protos\album.proto" GrpcServices="Server" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.52.0" />
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
@@ -22,6 +16,7 @@
    <ItemGroup>
     <ProjectReference Include="..\MusicLibrary.Shared\MusicLibrary.Shared.csproj" />
     <ProjectReference Include="..\MusicLibrary.Service\MusicLibrary.Service.csproj" />
+    <ProjectReference Include="..\MusicLibrary.Service.Grpc.Contract\MusicLibrary.Service.Grpc.Contract.csproj" />
   </ItemGroup>
 
 </Project>

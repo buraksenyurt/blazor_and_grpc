@@ -50,11 +50,6 @@ Eğer _database update_ işlemi başarılı bir şekilde çalıştıysa en azın
 
 Pek tabi modelde değişiklikler yaparsak tekrardan bir migration planı oluşturup işletmemiz gerekiyor.
 
-## Proje Hakkında Bazı Temel Bilgiler
+## Notlar
 
-- ~~Data klasöründe Entity nesneleri yer almaktadır. Bazı Entity nesneleri BaseEntity sınıfından türer _(Id ve Name alanları ortak olduğu için)_~~ Data klasörü, MusicLibrary.Data isimli kütüphanede yeniden konuşlandırılmuştır. Servis tarafındaki DI servislerine EF bağımlılığının eklenmesi için AddDataContext fonksiyonu geliştirilmiştir. Migration işlemleri buna göre yeniden düzenlenmiştir.
-- REST uygulamasındaki servisler Contract klasörü altında toplanmıştır. Tamamı BaseService'ten türetilmiştir. DI servislerine Transient modda kayıt edilmektedirler.
-- Model ve Entity nesneleri arasındaki geçişlerde AutoMapper kullanılmaktadır. SmartMapper isimli sınıfta eşleştirmelere ait özelleştirmeler vardır.
-- BaseService sınıfı tüm veritabanı iletişimini üstlenen generic bir enstrümandır. Örnek uygulamada az sayıda entity söz konusu olduğunda Interface soyutlaması tercih edilmemiştir.
-- Albüm ve müzisyen servislerini kullanan kontrolörler Controllers klasöründe yer alır ve generic BaseController sınıfından türerler.
-- Her bir kontroller kendisi ile ilgili olan Model, Entity ve enjekte edilen Service sınıfını kullanır.
+Grpc servislerine ait sözleşmeler MusicLibrary.Service.Grpc.Contract isimli projedeki proto dosylarından otomatik olaran üretilirler. proje dosyasındaki tanımlamalarda özellikle proto dosyaları için server veya client şeklinde roller belirlenmemiştir. Bunun sebebi hem Blazor Client tarafı hem de Service.Grpc tarafında bu kütüphanenin ortaklaşa kullanılmasıdır. Service.Grpc host time için gerekli grpc sözleşmelerini kullanırken, BlazorWASM Client tarafı da iletişim için gerekli proxy sözleşmelerini kullanabilir.

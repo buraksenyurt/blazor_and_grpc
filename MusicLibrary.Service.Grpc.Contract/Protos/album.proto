@@ -10,7 +10,7 @@ message Album{
     Category category = 5;
 }
 
-service AlbumContract{
+service AlbumContract {
     rpc Create(Album) returns (CreateResponse);
     rpc Update(Album) returns (GenericResponse);
     rpc Delete(SingleItemRequest) returns (GenericResponse);
@@ -18,5 +18,4 @@ service AlbumContract{
     // GetList talebi geldiğinde sunucundan birden fazla Album mesajı yollanacağını belirtmiş oluyoruz.
     // Bu mesajların her biri bir Album içeriğine sahip olacak ve istemci her mesajda bir album bilgisini almış olacak.
     rpc GetList(ListItemRequest) returns (stream Album); 
-
 }
