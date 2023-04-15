@@ -1,8 +1,8 @@
 using Microsoft.Net.Http.Headers;
 using MusicLibrary.Data;
 using MusicLibrary.Service;
-using MusicLibrary.Service.Grpc;
 using MusicLibrary.Service.Grpc.Contracts;
+using MusicLibrary.Service.Grpc.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -18,6 +18,7 @@ builder.Services.AddCors(setupAction =>
 builder.Services.AddTransient<AlbumService>();
 builder.Services.AddTransient<MusicianService>();
 builder.Services.AddDataContext(configuration);
+builder.Services.AddAutoMapper(typeof(GrpcMapper)); // GRPC
 
 var app = builder.Build();
 app.UseGrpcWeb();

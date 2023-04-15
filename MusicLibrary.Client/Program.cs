@@ -10,7 +10,6 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddAutoMapper(typeof(RestMapper)); //REST
-builder.Services.AddAutoMapper(typeof(GrpcMapper)); // GRPC
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5200") }); //REST
 
 builder.Services.AddSingleton(s =>

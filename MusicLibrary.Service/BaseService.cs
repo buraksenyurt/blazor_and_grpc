@@ -71,7 +71,7 @@ public abstract class BaseService<E, M>
     public async Task<IEnumerable<M>> GetAllAsync(int page, int count)
     {
         /*
-            AsNoTracking var çünkü; Liste çekle işleminden veri değişikliği beklemediğimizden,
+            AsNoTracking var çünkü; Liste çekme işleminden veri değişikliği beklemediğimizden,
             context'in değişiklikleri izlemesine gerek yok. Bu kullanım, fazla bellek tüketimini de önler.
         */
         var entities = await _dbContenxt.Set<E>()

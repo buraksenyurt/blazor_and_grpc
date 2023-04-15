@@ -1,9 +1,8 @@
 using AutoMapper;
 using MusicLibrary.Shared.Model;
 using Google.Protobuf.WellKnownTypes;
-using MusicLibrary.Data.Entity;
 
-namespace MusicLibrary.Shared.Mapper;
+namespace MusicLibrary.Service.Grpc.Mapper;
 
 public class GrpcMapper : Profile
 {
@@ -17,5 +16,6 @@ public class GrpcMapper : Profile
 
         CreateMap<Musician, MusicianModel>().ReverseMap();
         CreateMap<Album, AlbumModel>().ReverseMap();
+        CreateMap<Category, CategoryModel>().ReverseMap();
     }
 }
