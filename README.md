@@ -53,3 +53,5 @@ Pek tabi modelde değişiklikler yaparsak tekrardan bir migration planı oluştu
 ## Notlar
 
 Grpc servislerine ait sözleşmeler MusicLibrary.Service.Grpc.Contract isimli projedeki proto dosylarından otomatik olaran üretilirler. proje dosyasındaki tanımlamalarda özellikle proto dosyaları için server veya client şeklinde roller belirlenmemiştir. Bunun sebebi hem Blazor Client tarafı hem de Service.Grpc tarafında bu kütüphanenin ortaklaşa kullanılmasıdır. Service.Grpc host time için gerekli grpc sözleşmelerini kullanırken, BlazorWASM Client tarafı da iletişim için gerekli proxy sözleşmelerini kullanabilir.
+
+Grpc örneğinde önyüz tarafında proto türevli nesneler ile, model nesneleri arasında bir mapping söz konusudur. Ancak aynı zamanda Entity'ler ile Model nesneleri arasında da bir Mapping işlemi gereklidir.
