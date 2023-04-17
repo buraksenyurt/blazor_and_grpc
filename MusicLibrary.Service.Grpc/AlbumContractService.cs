@@ -9,11 +9,13 @@ public class AlbumContractService
 {
     private readonly AlbumService _albumService;
     private readonly IMapper _mapper;
+    private readonly ILogger _logger;
 
-    public AlbumContractService(AlbumService albumService, IMapper mapper)
+    public AlbumContractService(AlbumService albumService, IMapper mapper, ILogger<AlbumContractService> logger)
     {
         _albumService = albumService;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public override async Task<CreateResponse> Create(Album request, ServerCallContext context)
@@ -37,10 +39,21 @@ public class AlbumContractService
 
     public override async Task GetList(ListItemRequest request, IServerStreamWriter<Album> responseStream, ServerCallContext context)
     {
+        _logger.LogInformation($"Page Index/Count {request.Page}/{request.PageSize}");
         var data = await _albumService.GetAllAsync(request.Page, request.PageSize);
+        _logger.LogInformation($"Data Count {data.Count()}");
         foreach (var item in data)
         {
+            _logger.LogInformation($"Item -> {item.Id},{item.Name},{item.Year},{item.Category}");
             var model = _mapper.Map<Album>(item);
+            // var model = new Album
+            // {
+            //     Id = item.Id,
+            //     Name = item.Name,
+            //     Year = item.Year,
+            //     Category = (Category)item.Category
+            // };
+            _logger.LogInformation($"Grpc Mode -> {model.Id},{model.Name},{model.Year},{model.Category}");
             await responseStream.WriteAsync(model);
         }
     }

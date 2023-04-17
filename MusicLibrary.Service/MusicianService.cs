@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using MusicLibrary.Data.Entity;
 using MusicLibrary.Shared.Model;
 
@@ -14,8 +15,8 @@ namespace MusicLibrary.Service;
 public class MusicianService
     : BaseService<Musician, MusicianModel>
 {
-    public MusicianService(MusicLibraryDbContext dbContext, IMapper mapper)
-        : base(dbContext, mapper)
+    public MusicianService(MusicLibraryDbContext dbContext, IMapper mapper,ILogger<MusicianService> logger)
+        : base(dbContext, mapper,logger)
     {
     }
 }

@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using MusicLibrary.Data.Entity;
 using MusicLibrary.Shared.Model;
 
@@ -20,14 +21,16 @@ public abstract class BaseService<E, M>
 {
     private readonly MusicLibraryDbContext _dbContenxt;
     private readonly IMapper _mapper;
+    private readonly ILogger _logger;
 
     /*
         Serviste kullanılacak bağımlılıklar constructor üzerinden enjekte edilirler.
     */
-    public BaseService(MusicLibraryDbContext dbContext, IMapper mapper)
+    public BaseService(MusicLibraryDbContext dbContext, IMapper mapper, ILogger<BaseService<E, M>> logger)
     {
         _dbContenxt = dbContext;
         _mapper = mapper;
+        _logger = logger;
     }
 
     /*
@@ -48,7 +51,7 @@ public abstract class BaseService<E, M>
     // Delete ve Update işlemleri için kullanılacak yardımcı metot.
     // Bunu dışarıya açmadığımız için private
     private async Task<E> GetEntityAsync(int id)
-    {        
+    {
         var entity = await _dbContenxt.FindAsync<E>(id);
         if (entity == null)
         {
@@ -79,7 +82,7 @@ public abstract class BaseService<E, M>
             .Select(e => e)
             .Skip((page - 1) * count)
             .Take(count).ToListAsync();
-
+        _logger.LogWarning($"{entities.Count()} albüm kullanılacak");
         // Entity'lerin her biri Model'e çevrilerek geri döndürülür.
         return entities.Select(e => _mapper.Map<M>(e));
 

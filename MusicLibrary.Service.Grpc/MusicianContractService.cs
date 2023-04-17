@@ -37,7 +37,9 @@ public class MusicianContractService
 
     public override async Task GetList(ListItemRequest request, IServerStreamWriter<Musician> responseStream, ServerCallContext context)
     {
+        // _logger.LogInformation($"Sayfa no : {request.Page}, Sayı : {request.PageSize}");
         var data = await _musicianService.GetAllAsync(request.Page, request.PageSize);
+        // _logger.LogInformation($"{data.Count()} satır geldi");
         foreach (var item in data)
         {
             var model = _mapper.Map<Musician>(item);

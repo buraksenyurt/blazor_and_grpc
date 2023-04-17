@@ -1,11 +1,11 @@
-using Microsoft.Net.Http.Headers;
 using MusicLibrary.Data;
 using MusicLibrary.Service;
 using MusicLibrary.Service.Grpc.Contracts;
-using MusicLibrary.Service.Grpc.Mapper;
+using MusicLibrary.Shared.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+builder.Logging.AddConsole();
 
 builder.Services.AddGrpc();
 builder.Services.AddCors(setupAction =>
